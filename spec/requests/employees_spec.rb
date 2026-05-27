@@ -9,4 +9,23 @@ RSpec.describe "Employees", type: :request do
         .to have_http_status(:success)
     end
   end
+
+  describe "POST /employees" do
+    it "creates employee" do
+      expect {
+        post employees_path,
+            params: {
+              employee: {
+                first_name: "John",
+                last_name: "Doe",
+                email: "john@example.com",
+                country: "India",
+                job_title: "Engineer",
+                department: "Engineering",
+                salary: 100000
+              }
+            }
+      }.to change(Employee, :count).by(1)
+    end
+  end
 end
