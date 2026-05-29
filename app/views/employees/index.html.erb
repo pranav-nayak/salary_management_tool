@@ -1,1 +1,84 @@
-<h1>Employees</h1>
+<div class="d-flex justify-content-between align-items-center mb-4">
+
+  <%= link_to "Add Employee",
+              new_employee_path,
+              class: "btn btn-primary" %>
+</div>
+
+<%= form_with url: employees_path,
+              method: :get,
+              local: true,
+              class: "row g-3 mb-4" do %>
+
+  <div class="col-md-4">
+    <%= text_field_tag :search,
+                      params[:search],
+                      placeholder: "Search employee",
+                      class: "form-control" %>
+  </div>
+
+  <div class="col-md-3">
+    <%= text_field_tag :country,
+                      params[:country],
+                      placeholder: "Country",
+                      class: "form-control" %>
+  </div>
+
+  <div class="col-md-3">
+    <%= text_field_tag :job_title,
+                      params[:job_title],
+                      placeholder: "Job Title",
+                      class: "form-control" %>
+  </div>
+
+  <div class="col-md-2">
+    <%= submit_tag "Filter",
+                    class: "btn btn-dark w-100" %>
+  </div>
+<% end %>
+
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Country</th>
+      <th>Job Title</th>
+      <th>Department</th>
+      <th>Salary</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @employees.each do |employee| %>
+      <tr>
+        <td><%= employee.full_name %></td>
+        <td><%= employee.email %></td>
+        <td><%= employee.country %></td>
+        <td><%= employee.job_title %></td>
+        <td><%= employee.department %></td>
+        <td>$<%= employee.salary.to_i %></td>
+        <td><%= employee.status %></td>
+        <td>
+          <%= link_to "View",
+                      employee_path(employee),
+                      class: "btn btn-sm btn-info" %>
+
+          <%= link_to "Edit",
+                      edit_employee_path(employee),
+                      class: "btn btn-sm btn-warning" %>
+
+          <%= link_to "Delete",
+                      employee_path(employee),
+                      data: {
+                        turbo_method: :delete,
+                        turbo_confirm: "Are you sure?"
+                      },
+                      class: "btn btn-sm btn-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

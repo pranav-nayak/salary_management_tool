@@ -1,2 +1,45 @@
-<h1>Dashboard#index</h1>
-<p>Find me in app/views/dashboard/index.html.erb</p>
+<h1 class="mb-4">Salary Insights Dashboard</h1>
+
+<div class="row mb-4">
+  <div class="col-md-3">
+    <div class="card p-3">
+      <h5>Total Employees</h5>
+      <h3><%= @total_employees %></h3>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="card p-3">
+      <h5>Average Salary</h5>
+      <h3>$<%= @average_salary.to_i %></h3>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="card p-3">
+      <h5>Highest Salary</h5>
+      <h3>$<%= @highest_salary.to_i %></h3>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="card p-3">
+      <h5>Lowest Salary</h5>
+      <h3>$<%= @lowest_salary.to_i %></h3>
+    </div>
+  </div>
+</div>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Country</th>
+      <th>Employees</th>
+      <th>Minimum Salary</th>
+      <th>Maximum Salary</th>
+      <th>Average Salary</th>
+    </tr>
+  </thead>
+
+  
+</table>
