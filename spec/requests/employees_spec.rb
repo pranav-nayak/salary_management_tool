@@ -70,7 +70,7 @@ RSpec.describe "Employees", type: :request do
 
       expect(response).to have_http_status(422)
       expect(response.body).to include("Edit Employee")
-      expect(employee.reload.first_name).to eq("MyString")
+      expect(employee.reload.first_name).to eq("John")
     end
   end
 

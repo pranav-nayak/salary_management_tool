@@ -41,5 +41,15 @@
     </tr>
   </thead>
 
-  
+  <tbody>
+    <% @country_stats.each do |stat| %>
+      <tr>
+        <td><%= stat.country %></td>
+        <td><%= stat.employee_count %></td>
+        <td>$<%= stat.min_salary.to_i %></td>
+        <td>$<%= stat.max_salary.to_i %></td>
+        <td>$<%= stat.avg_salary.to_i %></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
